@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en-us">
-
-  <body>
+ <body>
 <canvas id="canvas"></canvas>
 <script>
+    //创建画布
     var canvas = document.getElementById("canvas");
     var context = canvas.getContext("2d");
     canvas.width = 640;
@@ -14,28 +14,14 @@
 	{
         invert(this);
     };
-    //    像素点的rgba数组
+	
     function invert(img) 
 	{
-        /*context.drawImage(img,0,0);
-        //获取图片对象以及元素点的数组
-        var img1 = context.getImageData(0, 0, 800, 800);
-        var data = img1.data;
-        //反转rgba
-        for (var i = 0, len = data.length; i < len; i += 4 
-		{
-			var avg=(data[i]+data[i+1]+data[i+2])/3;
-			data[i]=avg;
-			data[i+1]=avg;
-			data[i+2]=avg
-        }
-        context.putImageData(img1, 0, 0);*/
-		
 		context.drawImage(img,0,0);
 		//获取图片对象以及元素点的数组
 		var img1 = context.getImageData(0, 0, 640, 853);
 		var data = img1.data;
-		//转换灰度图
+		//根据灰度分级
 		var arr=["1","2","3","4","5","6","7","8","9",",",",",",",",",".",".","."];
 		var result=[];
 		for (var i = 0, len = data.length; i < len; i += 8) {
@@ -50,7 +36,6 @@
 		}
 		var opt=document.getElementById("inner");
 		opt.innerHTML=result.join();
-		//document.body.appendChild(opt);
     }
 </script>
 </script>
